@@ -91,12 +91,12 @@ function _M.pack(arg_url, prefix, random, checkAlready)
     -- prefix
     if prefix == nil then
         if ngx.var.server_port == "80" then
-            prefix = "http://" .. ngx.var.server_name .. "/"
+            prefix = ngx.var.scheme .. "://" .. ngx.var.server_name .. "/"
         else 
-            prefix = "http://" .. ngx.var.server_name .. ":" .. ngx.var.server_port .. "/"
+            prefix = ngx.var.scheme .. "://" .. ngx.var.server_name .. ":" .. ngx.var.server_port .. "/"
         end
     else 
-        prefix = "http://" .. prefix .. "/"
+        prefix = ngx.var.scheme .. "://" .. prefix .. "/"
     end
 
     local hash = ngx.md5(url)
