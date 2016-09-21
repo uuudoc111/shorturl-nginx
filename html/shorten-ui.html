@@ -16,7 +16,7 @@
 <h1>Welcome to url-shorten page!</h1>
 <p>&nbsp;</p>
 <div>长地址:</div>
-<textarea id="source" rows="3" cols="60" onclick="javascript:tishi();"></textarea>
+<textarea id="source" rows="3" cols="60"></textarea>
 <br></br>
 <div>短地址域名:</div>
 <textarea id="prefix" rows="3" cols="60" ></textarea>
@@ -41,7 +41,7 @@
     source.onblur = function() {
         var text = this.value;
 
-        if (text != "" && text.search("http://") < 0) {
+        if (text != "" && text.search("http://") < 0 && text.search("https://") < 0) {
             this.value = "http://"+text;
         } 
         else if (text == "") {
@@ -107,7 +107,7 @@
             }
         }
 
-        alert(queryString);
+        //alert(queryString);
 
         xmlHttp.open("GET", queryString, false);
         xmlHttp.onreadystatechange = handleStateChange;
